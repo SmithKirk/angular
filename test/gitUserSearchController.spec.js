@@ -12,6 +12,7 @@ describe('GitUserSearchController', function(){
     expect(ctrl.searchTerm).toBeUndefined();
   });
 
+
   describe('when searching for a user', function() {
 
     var items = [
@@ -27,9 +28,26 @@ describe('GitUserSearchController', function(){
       }
     ];
 
+    var httpBackend;
+    beforeEach(inject(function($httpBackend) {
+
+      httpBackend = $httpBackend;
+      httpBackend
+        .expect("GET", "https://api.github.com/search/users?q=kirk")
+        .respond(
+        { items: items }
+      );
+    }));
+
+    afterEach(function() {
+      httpBackend.verifyNoOutstandingExpectation();
+      httpBackend.verifyNoOutstandingRequest();
+    });
+
     it('displays search results', function() {
-      ctrl.searchTerm = 'hello';
+      ctrl.searchTerm = 'kirk';
       ctrl.doSearch();
+      httpBackend.flush();
       expect(ctrl.searchResult.items).toEqual(items);
     });
 
