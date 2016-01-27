@@ -37,10 +37,10 @@ describe('factory: Search', function() {
 
 
   it('returns search results', function() {
-  search.query('kirk')
-    .then(function(response) {
-      expect(response.data.items).toEqual(items);
-    });
-  httpBackend.flush();
+    search.query('kirk')
+      .then(function(response) {
+        expect(response.data.items).toEqual(items);
+      });
+    httpBackend.flush();
   });
 });
