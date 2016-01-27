@@ -15,5 +15,8 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
     "protractor": "^3.0.0"
+  },
+  "dependencies": {
+    "http-server": "^0.8.5"
   }
 }
