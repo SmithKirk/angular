@@ -1,4 +1,9 @@
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['githubProfileFeature.js']
+  specs: ['githubProfileFeature.js'],
+  capabilites: [{
+    browserName: 'firefox'
+  }, {
+    browserName: 'chrome'
+  }]
 };
